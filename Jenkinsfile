@@ -5,9 +5,7 @@ pipeline {
         disableConcurrentBuilds() 
         timestamps() 
     }
-    parameters {
-        base64File 'small'
-    }
+
     environment{
         IMAGE_NAME_FOR_APP = "chat-api"
         IMAGE_NAME_FOR_PROXY = "chat-proxy"
@@ -19,7 +17,6 @@ pipeline {
         SSH_CREDENTIALS_ID = 'remote-server-credentials'
         REMOTE_SERVER = 'ec2-13-232-170-244.ap-south-1.compute.amazonaws.com' 
         REMOTE_SERVER_USERNAME = 'ubuntu'
-        DEST_PATH = '/home/ubuntu/backend' 
     }
     
 
@@ -100,7 +97,8 @@ pipeline {
 
                                 echo "Removing all Docker images"
                                 docker images -q | xargs --no-run-if-empty docker rmi -f
-
+                                
+                                cd backend/
                                 docker-compose up -d
 
                                 echo "Deployment successful"
