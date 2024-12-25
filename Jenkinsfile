@@ -87,7 +87,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: env.DOCKER_CREDENTIALS_ID, passwordVariable: 'DOCKERHUB_PASS',usernameVariable: 'DOCKER_USERNAME')]) {
                             try {
                                 sh """
-                                ssh -o StrictHostKeyChecking=no $REMOTE_HOST << 'EOF'
+                                ssh -o StrictHostKeyChecking=no $REMOTE_SERVER << 'EOF'
 
                                 echo "Logging into Docker Hub"
                                 echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
