@@ -1,0 +1,40 @@
+# Node.js specific files
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS specific files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+
+# Editor files
+.idea
+*.iml
+.vscode
+*.suo
+*.ntvs*
+*.nvs*
+
+# Logs and Output
+logs/
+*.log
+*.err
+
+# Testing files
+coverage/
+.nyc_output/
+
+# Build files
+build/
+dist/
+lib/
+
+# IDE specific files
+.vscode/
+
+# Misc
+.env
+
+public

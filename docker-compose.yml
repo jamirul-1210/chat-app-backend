@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  app:
+    image: jamirul/chat-api:latest
+    ports:
+      - "8080:8080"
+    container_name: express-app
+    env_file: 
+      - .env
+    volumes:
+      - assets:/app/public/assets # Persistent volume for assets
+    depends_on:
+      - mongo
+
+  nginx:
+    image: jamirul/chat-proxy:latest
+    ports:
+      - "80:80"
+    container_name: nginx-proxy
+    depends_on:
+      - app
+
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    env_file: 
+    - .env
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
+  assets:
