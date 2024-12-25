@@ -101,10 +101,6 @@ pipeline {
                                 echo "Removing all Docker images"
                                 docker images -q | xargs --no-run-if-empty docker rmi -f
 
-                                echo "Transferring docker-compose.yml to remote server..."
-                                scp -o StrictHostKeyChecking=no ${env.WORKSPACE}/docker-compose.yml ${REMOTE_SERVER_USERNAME}@${REMOTE_SERVER}:${DEST_PATH}
-                                echo "File transfer complete."
-
                                 docker-compose up -d
 
                                 echo "Deployment successful"
