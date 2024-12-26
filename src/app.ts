@@ -8,7 +8,7 @@ import { StatusCodes } from 'http-status-codes';
 import fs from 'fs';
 import { UPLOAD_DIRECTORY } from './config/constants';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+
 
 // load envs
 dotenv.config()
@@ -31,19 +31,7 @@ app.use(cors({
 // Adding middlewares
 app.use(bodyParser.json()); // to parse json data
 app.use(bodyParser.urlencoded({ extended: true })); // to parse form data
-app.use(helmet());
-
-// Rate limiting middleware
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  message: 'Too many requests from this IP, please try again after 15 minutes.',
-});
-
-// Apply rate limiting to all routes
-app.use(limiter);
+app.use(helmet())
 
 
 // Create uploads directory if it doesn't exist for storage

@@ -23,9 +23,6 @@ importers:
       express:
         specifier: ^4.21.2
         version: 4.21.2
-      express-rate-limit:
-        specifier: ^7.5.0
-        version: 7.5.0(express@4.21.2)
       helmet:
         specifier: ^8.0.0
         version: 8.0.0
@@ -60,9 +57,6 @@ importers:
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.0
-      '@types/express-rate-limit':
-        specifier: ^6.0.2
-        version: 6.0.2(express@4.21.2)
       '@types/helmet':
         specifier: ^4.0.0
         version: 4.0.0
@@ -140,10 +134,6 @@ packages:
 
   '@types/cors@2.8.17':
     resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
-
-  '@types/express-rate-limit@6.0.2':
-    resolution: {integrity: sha512-e1xZLOOlxCDvplAGq7rDcXtbdBu2CWRsMjaIu1LVqGxWtKvwr884YE5mPs3IvHeG/OMDhf24oTaqG5T1bV3rBQ==}
-    deprecated: This is a stub types definition. express-rate-limit provides its own type definitions, so you do not need this installed.
 
   '@types/express-serve-static-core@5.0.2':
     resolution: {integrity: sha512-vluaspfvWEtE4vcSDlKRNer52DvOGrB2xv6diXy6UKyKW0lqZiWHGNApSyxOv+8DE5Z27IzVvE7hNkxg7EXIcg==}
@@ -445,12 +435,6 @@ packages:
   etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
-
-  express-rate-limit@7.5.0:
-    resolution: {integrity: sha512-eB5zbQh5h+VenMPM3fh+nw1YExi5nMr6HUCR62ELSP11huvxm/Uir1H1QEyTkk5QX6A58pX6NmaTMceKZ0Eodg==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      express: ^4.11 || 5 || ^5.0.0-beta.1
 
   express@4.21.2:
     resolution: {integrity: sha512-28HqgMZAmih1Czt9ny7qr6ek2qddF4FclbMzwhCREB6OFfH+rXAnuNCwo1/wFvrtbgsQDb4kSbX9de9lFbrXnA==}
@@ -1141,12 +1125,6 @@ snapshots:
     dependencies:
       '@types/node': 22.10.2
 
-  '@types/express-rate-limit@6.0.2(express@4.21.2)':
-    dependencies:
-      express-rate-limit: 7.5.0(express@4.21.2)
-    transitivePeerDependencies:
-      - express
-
   '@types/express-serve-static-core@5.0.2':
     dependencies:
       '@types/node': 22.10.2
@@ -1439,10 +1417,6 @@ snapshots:
   escape-html@1.0.3: {}
 
   etag@1.8.1: {}
-
-  express-rate-limit@7.5.0(express@4.21.2):
-    dependencies:
-      express: 4.21.2
 
   express@4.21.2:
     dependencies:
