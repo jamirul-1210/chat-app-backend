@@ -21,17 +21,21 @@ if (!ALLOWED_ORIGIN) {
   process.exit(1);
 }
 
-// CORS middleware to allow requests from any origin
-app.use(cors({
-  origin: [ALLOWED_ORIGIN],
-  credentials: true
-}));
+// Configure CORS with security considerations
+const corsOptions = {
+  origin: ALLOWED_ORIGIN, 
+  methods: 'GET,HEAD,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
+// CORS middleware to allow requests from any origin
+app.use(cors(corsOptions));
+app.use(helmet())
 
 // Adding middlewares
 app.use(bodyParser.json()); // to parse json data
 app.use(bodyParser.urlencoded({ extended: true })); // to parse form data
-app.use(helmet())
+
 
 
 // Create uploads directory if it doesn't exist for storage
@@ -41,7 +45,13 @@ if (!fs.existsSync(UPLOAD_DIRECTORY)) {
 }
  
 // Serve static assets
-app.use("/assets", express.static(UPLOAD_DIRECTORY));
+app.use("/assets", express.static(UPLOAD_DIRECTORY,{
+  setHeaders: (res, path) => {
+ if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg')) { 
+      res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin'); 
+    }
+  }
+}));
 
 
 // test route to check if the server is running
